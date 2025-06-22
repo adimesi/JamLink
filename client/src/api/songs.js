@@ -5,7 +5,7 @@ const ONLINE_API_URL = process.env.ONLINE_SONG_API_URL;
 
 export const getSongs = async () => {
     try {
-        const response = await axios.get(`${SONG_API_URL}/`);
+        const response = await axios.get(`${SONG_API_URL}/songs/`);
         return response.data;
     } catch (error) {
         if (error.response) {
@@ -17,7 +17,7 @@ export const getSongs = async () => {
 
 export const searchSongs = async (query) => {
     try {
-        const response = await axios.get(`${SONG_API_URL}/search`, {
+        const response = await axios.get(`${SONG_API_URL}/songs/search`, {
             params: { query }
         });
         return response.data;
@@ -30,7 +30,7 @@ export const searchSongs = async (query) => {
 }
 export const getSongByName = async (name) => {
     try {
-        const response = await axios.get(`${SONG_API_URL}/search/${name}`);
+        const response = await axios.get(`${SONG_API_URL}/songs/search/${name}`);
         return response.data;
     } catch (error) {
         if (error.response) {
@@ -43,7 +43,7 @@ export const getSongByName = async (name) => {
 
 export const searchOnlineSongs = async (query) => {
     try {
-        const response = await axios.get(`${ONLINE_API_URL}/search`, {
+        const response = await axios.get(`${ONLINE_API_URL}/online-songs/search`, {
             params: { query }
         });
         return response.data;
@@ -56,7 +56,7 @@ export const searchOnlineSongs = async (query) => {
 }
 export const getOnlineSongDetails = async (url) => {
     try {
-        const response = await axios.get(`${ONLINE_API_URL}/song`, {
+        const response = await axios.get(`${ONLINE_API_URL}/online-songs/song`, {
             params: { url }
         });
         return response.data;

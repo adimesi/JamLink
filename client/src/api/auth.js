@@ -5,7 +5,7 @@ const AUTH_API_URL = process.env.API_URL;
 
 export const login = async (username, password) => {
     try {
-        const response = await axios.post(`${AUTH_API_URL}/login`, {
+        const response = await axios.post(`${AUTH_API_URL}/auth/login`, {
             username,
             password,
         });
@@ -26,7 +26,7 @@ export const login = async (username, password) => {
 
 export const signup = async (username, password, instrument) => {
     try {
-        const response = await axios.post(`${AUTH_API_URL}/signup`, {
+        const response = await axios.post(`${AUTH_API_URL}/auth/signup`, {
             username,
             password,
             instrument,
@@ -43,7 +43,7 @@ export const signup = async (username, password, instrument) => {
 
 export const adminSignup = async (username, password) => {
     try {
-        const response = await axios.post(`${AUTH_API_URL}/admin/signup`, {
+        const response = await axios.post(`${AUTH_API_URL}/auth/admin/signup`, {
             username,
             password
         });
@@ -59,7 +59,7 @@ export const adminSignup = async (username, password) => {
 
 export const logout = async () => {
     try {
-        const response = await axios.get(`${AUTH_API_URL}/logout`, { withCredentials: true });
+        const response = await axios.get(`${AUTH_API_URL}/auth/logout`, { withCredentials: true });
         if (response.status !== 200) {
             throw new Error("Logout failed");
         }
