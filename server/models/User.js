@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-
-// in the instrument to add required field(?)
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },

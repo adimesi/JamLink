@@ -20,7 +20,7 @@ router.post('/signup', async (req, res) => {
 
     } 
     catch(err){
-    res.status(500).json({message: 'Admin signup failed', error: err.message});
+    res.status(500).json({message: 'User signup failed', error: err.message});
 
     } 
 });
@@ -51,14 +51,23 @@ router.post('/login', async (req,res) =>{
         if(!isMatch){
             return res.status(401).json({message: 'User password invalid'});
         }
-        const token = jwt.sign({userId: user._id ,role:user.role}, process.env.JWT_SECRET,{expiresIn:'1h'});
+        const token = jwt.sign(
+        {
+            userId: user._id,
+            username: user.username,
+            role: user.role,
+            instrument: user.instrument // this will be undefined for admin, which is fine
+        },
+        process.env.JWT_SECRET,
+        { expiresIn: '1h' }
+        );
         const userData = user.role === 'admin' ? { username: user.username, role: user.role } : { username: user.username, role:user.role , instrument: user.instrument };
-        // res.cookie('token', token, {
-        //     httpOnly: true,
-        //     secure: process.env.NODE_ENV === 'production',
-        //     sameSite: 'Strict',
-        //     maxAge: 3600000 // 1 hour
-        // });       
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: false, // change to true in production with HTTPS
+            sameSite: 'none', 
+            maxAge: 3600000, // 1 hour
+        });
         res.status(200).json({ message: 'User login successfully', token, user: userData });
     }
     catch(err){
@@ -67,4 +76,16 @@ router.post('/login', async (req,res) =>{
     }
 });
 
+router.get('/logout', (req, res) => {
+    if (!req.cookies.token) {
+        return res.status(400).json({ message: 'No user is logged in' });
+    }
+     res.clearCookie('token', {
+        httpOnly: true,
+        secure: false, // change to true in production with HTTPS
+        sameSite: 'none'
+    });
+    res.status(200).json({ message: 'Logged out successfully' });
+
+}); 
 module.exports = router;

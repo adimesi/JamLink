@@ -1,80 +1,39 @@
-import { createContext, useState} from 'react';
-// import Cookies from 'js-cookie';
-// import jwt_decode from 'jwt-decode';
+import { createContext, useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
+import { jwtDecode } from 'jwt-decode';
+import axios from 'axios';
+
+
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    // const [username, setUsername] = useState(null);
-    // const [role, setRole] = useState(null);
-    // const [instrument, setInstrument] = useState(null);
+    const [user, setUser] = useState(null); 
+    const [loading, setLoading] = useState(true); 
 
-    // const login = async (userData) => {
-    //     try {
-    //         const response = await apiLogin(userData.username, userData.password);
-    //         setUsername(response.username);
-    //         setRole(response.role);
+    useEffect(() => {
+        const token = Cookies.get('token'); 
+        if (token) {
+            try {
+                const decoded = jwtDecode(token); // Decode the JWT token
+                setUser({ username: decoded.username, role: decoded.role, instrument: decoded.instrument });
+                // Set default Authorization header for axios requests
+                axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+            } catch (e) {
+                // If token is invalid, clear user and token
+                setUser(null);
+                Cookies.remove('token');
+                delete axios.defaults.headers.common['Authorization'];
+            }
+        } else {
+            // If no token, ensure user is null and remove Authorization header
+            setUser(null);
+            delete axios.defaults.headers.common['Authorization'];
+        }
+        setLoading(false); 
+    }, []);
 
-    //         if (response.role === 'user') {
-    //             setInstrument(response.instrument);
-    //         } else {
-    //             setInstrument(null);
-    //         }
-    //     } catch (error) {
-    //         console.error('Login failed:', error);
-    //         throw error;
-    //     }
-    // };
-
-    // const signup = async (userData) => {
-    //     try {
-    //         await apiSignup(userData.username, userData.password, userData.instrument);
-    //         await login(userData); 
-    //     } catch (error) {
-    //         console.error('Signup failed:', error);
-    //         throw error;
-    //     }
-    // };
-
-    // const adminSignup = async (userData) => {
-    //     try {
-    //         await apiAdminSignup(userData.username, userData.password);
-    //         await login(userData);
-    //     } catch (error) {
-    //         console.error('Admin signup failed:', error);
-    //         throw error;
-    //     }
-    // };
-
-    // return (
-    //     <AuthContext.Provider
-    //         value={{
-    //             username,
-    //             role,
-    //             instrument,
-    //             login,
-    //             signup,
-    //             adminSignup
-    //         }}
-    //     >
-    //         {children}
-    //     </AuthContext.Provider>
-    // );
-    const [user, setUser] = useState(null);
-    
-    // useEffect(() => {
-    //     const token = Cookies.get('token');
-    //     if (token) {
-    //         try {
-    //             const decoded = jwt_decode(token);
-    //             // You can store more user info in the token if needed
-    //             setUser({ username: decoded.username, role: decoded.role, instrument: decoded.instrument });
-    //         } catch (e) {
-    //             setUser(null);
-    //         }
-    //     }
-    // }, []);
     return (
-        <AuthContext.Provider value={{ user, setUser}}>
+        <AuthContext.Provider value={{ user, setUser, loading }}>
             {children}
         </AuthContext.Provider>
     );

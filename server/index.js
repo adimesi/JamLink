@@ -4,16 +4,24 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
-const songRoutes =require('./routes/songRoute');
+const onlineSongsRoutes = require('./routes/onlineSongs');
+const songsRoutes = require('./routes/songRoute');
 const socket = require('socket.io');
+const cookieParser = require('cookie-parser');
 
 dotenv.config();
-
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3001',
+    credentials: true
+}));
 app.use(express.json());
-app.use('/auth',authRoutes);
-app.use('/songs', songRoutes);
+app.use(cookieParser()); 
+
+app.use('/auth', authRoutes);
+app.use('/songs', songsRoutes);
+app.use('/online-songs', onlineSongsRoutes);
+
 
 mongoose.connect(process.env.MONGO_URL)
     .then(() => { console.log('Connected to MongoDB'); })

@@ -5,12 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from './context/AuthContext';
 import { SocketProvider } from './context/SocketContext';
-// import axios from "axios";
-// import Cookies from "js-cookie";
-// const token = Cookies.get('token');
-// if (token) {
-//     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-// }
+import axios from "axios";
+import Cookies from "js-cookie";
+const token = Cookies.get('token');
+if (token) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+}
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

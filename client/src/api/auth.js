@@ -1,5 +1,6 @@
 import axios from "axios";
-// import Cookies from "js-cookie";
+import Cookies from "js-cookie";
+
 const API_URL = "http://localhost:3000/auth";
 
 export const login = async (username, password) => {
@@ -8,18 +9,21 @@ export const login = async (username, password) => {
             username,
             password,
         });
-        const { token, user}= response.data;
+        const { token, user } = response.data;
+        // Set default Authorization header for future axios requests
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;   
-        // Cookies.set('token', token, { expires: 7 }); // Store token in cookies for 7 days
+        // Store token in cookies for 1 day
+        Cookies.set('token', token, { expires: 1 }); 
         return user;
     }
     catch (error) {
         if (error.response) {
-            throw new Error( "Login failed");
+            throw new Error("Login failed");
         }   
         throw new Error("Server not responding");
     }
 };
+
 export const signup = async (username, password, instrument) => {
     try {
         const response = await axios.post(`${API_URL}/signup`, {
@@ -43,12 +47,27 @@ export const adminSignup = async (username, password) => {
             username,
             password
         });
-        return response.data; // Return the token
+        return response.data; 
     }
     catch (error) {
         if (error.response) {
             throw new Error("Admin signup failed");
         }
         throw new Error("Server not responding");
+    }
+};
+
+export const logout = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/logout`, { withCredentials: true });
+        if (response.status !== 200) {
+            throw new Error("Logout failed");
+        }
+        // Remove token from cookies and axios headers
+        Cookies.remove('token');
+        delete axios.defaults.headers.common['Authorization'];
+    } catch (error) {
+        console.error("Logout failed:", error);
+        throw new Error("Logout failed");
     }
 };

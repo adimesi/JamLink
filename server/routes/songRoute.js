@@ -38,7 +38,7 @@ const filesToJson = (files) => {
 router.get('/search', authMiddleware, async (req, res) => {
     const user = req.user;
     if (user.role !== 'admin') {
-        return res.status(400).json({ message: 'Access denied' });
+        return res.status(403).json({ message: 'Access denied' });
     }
     const { query } = req.query || {};
     try {
@@ -55,7 +55,7 @@ router.get('/search', authMiddleware, async (req, res) => {
 router.get('/', authMiddleware, async (req, res) => {
     const user = req.user;
     if (user.role !== 'admin') {
-        return res.status(400).json({ message: 'Access denied' });
+        return res.status(403).json({ message: 'Access denied' });
     }
     try {
         const files = fs.readdirSync(folderPath);

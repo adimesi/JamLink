@@ -1,0 +1,42 @@
+.user-header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: center;   /* Center horizontally */
+  align-items: center;
+  padding: 14px 0;
+  background: #f5f7fa;
+  box-shadow: 0 2px 8px rgba(60, 60, 120, 0.08);
+  border-radius: 0 0 12px 12px;
+  gap: 18px;
+}
+
+.user-header-greeting {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #009688;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-header-logout-button {
+  background: linear-gradient(90deg, #009688 0%, #4dd0e1 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 150, 136, 0.13);
+  transition: background 0.2s, transform 0.1s;
+}
+
+.user-header-logout-button:hover {
+  background: linear-gradient(90deg, #4dd0e1 0%, #009688 100%);
+  transform: translateY(-2px) scale(1.04);
+}

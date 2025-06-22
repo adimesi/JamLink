@@ -72,7 +72,7 @@
 .live-button {
     position: fixed;
     bottom: 20px;
-    right: 120px; /* Space to the left of the quit button */
+    right: 120px; 
     background: linear-gradient(90deg, #009688 0%, #4dd0e1 100%);
     color: white;
     border: none;
@@ -113,18 +113,18 @@
     transform: translateY(-2px) scale(1.03);
 }
 .live-song-content {
-    /* ...existing styles... */
+
     display: flex;
     flex-direction: column;
-    align-items: center; /* This centers child divs horizontally */
-    text-align: center;  /* This centers text inside pre tags */
+    align-items: center;
+    text-align: center;  
 }
 
 .live-lyrics {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center each line horizontally */
+    align-items: center; 
     justify-content: center;
 }
 

@@ -1,12 +1,8 @@
-import React from 'react';
 import '../styles/SongCard.css';
-
 
 const SongCard = ({ song, onSelect }) => {
     const handleClick = () => {
-        if (onSelect) {
-            onSelect(song);
-        }
+        if (onSelect) {onSelect(song);}
     };
 
     return (

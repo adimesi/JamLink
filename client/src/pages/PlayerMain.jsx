@@ -2,12 +2,14 @@ import React,{useContext,useEffect} from "react";
 import { SocketContext } from "../context/SocketContext";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import UserHeader from "../components/UserHeader";
 import '../styles/PlayerMain.css';
 
 function PlayerMain() {
     const socket = useContext(SocketContext);
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const navigate = useNavigate();
+
     useEffect(() => {
         // Listen for admin selecting a song
         socket.on('AdminSelectedSong', ({ song }) => {
@@ -23,18 +25,26 @@ function PlayerMain() {
             }
         });
 
-    // Request current song on mount
-    socket.emit('RequestCurrentSong');
+        // Request current song on mount
+        socket.emit('RequestCurrentSong');
 
-    return () => {
-        socket.off('AdminSelectedSong');
-        socket.off('CurrentSong');
-    };
-}, [socket, navigate]);
+        return () => {
+            socket.off('AdminSelectedSong');
+            socket.off('CurrentSong');
+        };
+    }, [socket, navigate]);
+
+    useEffect(() => {
+        if ( user === null) navigate('/'); 
+    }, [user, navigate]);
+
+    if (loading) return <div>Loading...</div>; // Show loading state while checking user
+    if (!user) return null; // Don't render if user is not available
 
 
     return (
         <div className="player-main-container">
+            <UserHeader />
             <h1 className="player-main-title">
                 Welcome, <span className="player-main-username">{user.username}</span>
             </h1>

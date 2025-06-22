@@ -1,11 +1,8 @@
-import React from 'react';
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import { adminSignup,login} from '../api/auth';
 import { AuthContext } from '../context/AuthContext';
-import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/AdminSignup.css';
-
 
 
 function AdminSignup() {
