@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const AUTH_API_URL = process.env.API_URL;
+const AUTH_API_URL = process.env.REACT_API_URL;
 
 export const login = async (username, password) => {
     try {
