@@ -30,7 +30,11 @@ mongoose.connect(process.env.MONGO_URL)
 // Socket.io setup
 const server = http.createServer(app);
 const io = new socket.Server(server, { 
-    cors: {origin: '*'} });
+    cors: {
+        origin: process.env.FRONTEND_URL,
+        credentials: true
+    }
+});
 
 let isAdminCreatedRehearsal = false;
 let currentSong = null;
