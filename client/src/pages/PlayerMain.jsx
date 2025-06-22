@@ -45,9 +45,7 @@ function PlayerMain() {
     return (
         <div className="player-main-container">
             <UserHeader />
-            <h1 className="player-main-title">
-                Welcome, <span className="player-main-username">{user.username}</span>
-            </h1>
+           
             <h2 className="player-main-subtitle">
                 Waiting for the next song to start...
             </h2>

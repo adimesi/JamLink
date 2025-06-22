@@ -57,7 +57,6 @@ function Live() {
   return (
     <div className="live-page-container">
       <UserHeader />
-      <h1 className="welcome-message">Welcome, <span className="username">{user.username}</span></h1>
       <h1 className="live-song-title">{song.name} - {song.artist}</h1>
       <div className="live-song-content" >
       {song.lines.map((line, index) => (

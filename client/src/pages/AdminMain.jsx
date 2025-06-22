@@ -53,9 +53,7 @@ function AdminMain() {
     return(
         <div className="admin-main-container">
             <UserHeader user={user} />
-            <h1 className="admin-main-title">
-                Welcome, <span className="admin-main-username">{user.username}</span>
-            </h1>
+            
             <h1 className="admin-main-title">Search any song...</h1>
             <form 
                 className="admin-search-form" 

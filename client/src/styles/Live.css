@@ -6,6 +6,7 @@
     background: linear-gradient(135deg, #e0f7fa 0%, #b2dfdb 100%);
     font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
     padding: 20px;
+    margin-top: 80px; /* Add space for header */
 }
 
 .welcome-message {
@@ -24,13 +25,15 @@
 }
 
 .live-song-title {
-    font-size: 30px;
-    font-weight: 700;
+    font-size: 32px;
+    font-weight: 800;
     color: #009688;
     margin-bottom: 18px;
+    margin-top: 18px;
     text-align: center;
     letter-spacing: 1px;
     text-shadow: 0 2px 8px #b2dfdb;
+    line-height: 1.2;
 }
 
 .live-song-content {
