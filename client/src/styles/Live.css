@@ -1,0 +1,135 @@
+.live-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e0f7fa 0%, #b2dfdb 100%);
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    padding: 20px;
+}
+
+.welcome-message {
+    font-size: 28px;
+    font-weight: 600;
+    color: #009688;
+    margin-bottom: 8px;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.username {
+    color: #4dd0e1;
+    font-weight: 700;
+    text-shadow: 0 1px 4px #b2dfdb;
+}
+
+.live-song-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #009688;
+    margin-bottom: 18px;
+    text-align: center;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px #b2dfdb;
+}
+
+.live-song-content {
+    width: 100%;
+    max-width: 700px;
+    background: #000;
+    color: #fff;
+    border-radius: 16px;
+    padding: 32px 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 32px rgba(60, 60, 120, 0.12);
+    font-size: 1.5em;
+}
+
+.live-lyrics {
+    margin-bottom: 1.2em;
+}
+
+.live-pre-first {
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+    font-size: 1em;
+    background: none;
+    color: #88f;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 1px;
+}
+
+.live-pre-second {
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+    font-size: 1em;
+    background: none;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 1px;
+}
+
+.live-button {
+    position: fixed;
+    bottom: 20px;
+    right: 120px; /* Space to the left of the quit button */
+    background: linear-gradient(90deg, #009688 0%, #4dd0e1 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 150, 136, 0.13);
+    transition: background 0.2s, transform 0.1s;
+    z-index: 10;
+}
+
+.live-button:hover {
+    background: linear-gradient(90deg, #4dd0e1 0%, #009688 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+
+.quit-button {
+    background: linear-gradient(90deg, #d32f2f 0%, #ff8a65 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    box-shadow: 0 2px 8px rgba(211, 47, 47, 0.13);
+    transition: background 0.2s, transform 0.1s;
+    z-index: 11;
+}
+
+.quit-button:hover {
+    background: linear-gradient(90deg, #ff8a65 0%, #d32f2f 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+.live-song-content {
+    /* ...existing styles... */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* This centers child divs horizontally */
+    text-align: center;  /* This centers text inside pre tags */
+}
+
+.live-lyrics {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center each line horizontally */
+    justify-content: center;
+}
+
+.live-pre-first,
+.live-pre-second {
+    text-align: center;
+    width: 100%;
+}

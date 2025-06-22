@@ -1,0 +1,72 @@
+.admin-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e0f7fa 0%, #b2dfdb 100%);
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    padding: 30px 10px 10px 10px;
+}
+
+.admin-main-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #009688;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px #b2dfdb;
+    text-align: center;
+}
+
+.admin-main-username {
+    color: #4dd0e1;
+    font-weight: 700;
+    text-shadow: 0 1px 4px #b2dfdb;
+}
+
+.admin-search-form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    margin-bottom: 18px;
+    justify-content: center;
+}
+
+.admin-search-input {
+    flex: 1;
+    padding: 13px 15px;
+    border: 2px solid #b2dfdb;
+    border-radius: 8px;
+    font-size: 15px;
+    background: #e0f2f1;
+    color: #333;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.admin-search-input:focus {
+    outline: none;
+    border-color: #009688;
+    box-shadow: 0 0 0 2px #b2dfdb;
+}
+
+.admin-search-button {
+    background: linear-gradient(90deg, #009688 0%, #4dd0e1 100%);
+    color: white;
+    padding: 13px 28px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 150, 136, 0.13);
+    transition: background 0.2s, transform 0.1s;
+    margin-left: 10px;
+}
+
+.admin-search-button:hover {
+    background: linear-gradient(90deg, #4dd0e1 0%, #009688 100%);
+    transform: translateY(-2px) scale(1.03);
+}
