@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const AUTH_API_URL = "https://ja-moveo-l8lw-server.vercel.app/auth";
+const AUTH_API_URL = process.env.API_URL;
 
 export const login = async (username, password) => {
     try {

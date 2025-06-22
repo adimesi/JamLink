@@ -1,6 +1,6 @@
 import axios from "axios";
-const SONG_API_URL = import.meta.env.VITE_SONG_API_URL;
-const ONLINE_API_URL = import.meta.env.VITE_ONLINE_SONG_API_URL;
+const SONG_API_URL = process.env.SONG_API_URL;
+const ONLINE_API_URL = process.env.ONLINE_SONG_API_URL;
 
 
 export const getSongs = async () => {
