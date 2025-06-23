@@ -12,8 +12,12 @@ const cookieParser = require('cookie-parser');
 dotenv.config();
 const app = express();
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true
+  origin: [
+    "https://ja-moveo-puce.vercel.app",
+    "https://jamoveo.vercel.app",
+    "https://ja-moveo-git-main-aaddiimm42-gmailcoms-projects.vercel.app"
+  ],
+  credentials: true
 }));
 app.use(express.json());
 app.use(cookieParser()); 
@@ -29,13 +33,16 @@ mongoose.connect(process.env.MONGO_URL)
 
 // Socket.io setup
 const server = http.createServer(app);
-const io = new socket.Server(server, { 
-    cors: {
-        origin: process.env.FRONTEND_URL,
-        credentials: true
-    }
+const io = new socket.Server(server, {
+  cors: {
+    origin: [
+      "https://ja-moveo-puce.vercel.app",
+      "https://jamoveo.vercel.app",
+      "https://ja-moveo-git-main-aaddiimm42-gmailcoms-projects.vercel.app"
+    ],
+    credentials: true
+  }
 });
-
 let isAdminCreatedRehearsal = false;
 let currentSong = null;
 
