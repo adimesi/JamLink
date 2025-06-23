@@ -40,6 +40,7 @@ const io = new socket.Server(server, {
       "https://jamoveo.vercel.app",
       "https://ja-moveo-git-main-aaddiimm42-gmailcoms-projects.vercel.app"
     ],
+    transports: ["polling"],
     credentials: true
   }
 });
