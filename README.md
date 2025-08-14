@@ -1,6 +1,6 @@
 # JamLink – Real-Time Collaborative Song Session App 🎶
 
-Welcome to **JamLink** – a vibrant platform for musicians and music fans to create, share, and enjoy songs together in real time! Whether you’re leading a jam or joining as a player, JaMoveo makes collaboration easy and fun. Enjoy live song sharing, instant updates, and a lively community—all in one place.
+Welcome to **JamLink** – a vibrant platform for musicians and music fans to create, share, and enjoy songs together in real time! Whether you’re leading a jam or joining as a player, JamLink makes collaboration easy and fun. Enjoy live song sharing, instant updates, and a lively community—all in one place.
 
 ## Screenshots
 
